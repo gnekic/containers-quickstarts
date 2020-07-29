@@ -26,5 +26,6 @@ ADD scl_enable /usr/share/container-scripts/
 ENV BASH_ENV=/usr/share/container-scripts/scl_enable \
     ENV=/usr/share/container-scripts/scl_enable \
     PROMPT_COMMAND="./usr/share/container-scripts/scl_enable"
+    PATH=$PATH:/opt/rh/rh-python36/root/usr/bin
 
 USER 1001
