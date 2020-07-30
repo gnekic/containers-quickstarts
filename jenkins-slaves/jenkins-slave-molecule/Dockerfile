@@ -30,4 +30,6 @@ ENV BASH_ENV=/usr/share/container-scripts/scl_enable \
     LC_ALL=en_US.UTF-8 \
     LANG=en_US.UTF-8 
 
+RUN oc version
+
 USER 1001
