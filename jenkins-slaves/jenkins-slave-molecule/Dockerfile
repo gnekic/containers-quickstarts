@@ -16,6 +16,7 @@ ADD ubi.repo /etc/yum.repos.d/ubi.repo
 RUN INSTALL_PKGS="rh-python36-python-pip" && \
     DISABLE_REPOS=--disablerepo='rhel-*' && \
     yum $DISABLE_REPOS install -y $INSTALL_PKGS && \
+    yum upgrade oc
     source scl_source enable rh-python36 && \
     scl enable rh-python36 bash && \
     python3 -m pip install ansible==$ANSIBLE_VERSION paramiko molecule && \
@@ -29,7 +30,5 @@ ENV BASH_ENV=/usr/share/container-scripts/scl_enable \
     PATH="${PATH}:/opt/rh/rh-python36/root/usr/bin" \
     LC_ALL=en_US.UTF-8 \
     LANG=en_US.UTF-8 
-
-RUN oc version
 
 USER 1001
