@@ -1,5 +1,7 @@
 FROM quay.io/openshift/origin-jenkins-agent-base:4.4
 
+RUN oc version
+
 LABEL com.redhat.component="jenkins-agent-ansible-ubi7-docker" \
       name="openshift/origin-jenkins-agent-ansible-ubi7" \
       version="4.4" \
@@ -16,7 +18,6 @@ ADD ubi.repo /etc/yum.repos.d/ubi.repo
 RUN INSTALL_PKGS="rh-python36-python-pip" && \
     DISABLE_REPOS=--disablerepo='rhel-*' && \
     yum $DISABLE_REPOS install -y $INSTALL_PKGS && \
-    yum upgrade oc
     source scl_source enable rh-python36 && \
     scl enable rh-python36 bash && \
     python3 -m pip install ansible==$ANSIBLE_VERSION paramiko molecule && \
